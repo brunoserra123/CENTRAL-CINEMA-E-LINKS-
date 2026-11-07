@@ -316,7 +316,19 @@
         <h2 class="text-lg font-bold text-white tracking-wide">Legendas, Capas & Metadados</h2>
       </div>
 
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4" id="subtitleGrid">
+        <!-- Legendei.net -->
+        <a href="https://legendei.net" target="_blank" class="card-glass p-4 rounded-2xl flex items-center gap-3.5 group">
+          <div class="w-10 h-10 rounded-xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center text-amber-400 group-hover:scale-110 transition-transform">
+            <i class="fa-solid fa-closed-captioning"></i>
+          </div>
+          <div>
+            <h3 class="font-bold text-white text-sm group-hover:text-amber-400 transition-colors">Legendei.net</h3>
+            <p class="text-xs text-zinc-400">Legendas PT-BR diretas</p>
+          </div>
+        </a>
+
+
         
         <!-- Subsource -->
         <a href="https://subsource.net" target="_blank" class="card-glass p-4 rounded-2xl flex items-center gap-3.5 group">
@@ -516,7 +528,7 @@
 
     function filterCards() {
       const q = document.getElementById('searchInput').value.toLowerCase();
-      document.querySelectorAll('#serverGrid a, #torrentGrid a, #customGrid > div').forEach(el => {
+      document.querySelectorAll('#serverGrid a, #torrentGrid a, #subtitleGrid a, #customGrid > div').forEach(el => {
         const text = el.innerText.toLowerCase();
         el.style.display = text.includes(q) ? 'flex' : 'none';
       });
