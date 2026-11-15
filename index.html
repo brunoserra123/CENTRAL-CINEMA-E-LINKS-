@@ -181,7 +181,41 @@
 
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4" id="serverGrid">
         
-                <!-- Central de Legendas Mobile -->
+        <!-- Homarr Dashboard Principal -->
+        <a href="http://192.168.15.58:7575" target="_blank" class="card-glass p-4 rounded-2xl flex items-center justify-between group border border-red-500/40 hover:border-red-500 shadow-lg shadow-red-500/10">
+          <div class="flex items-center gap-3.5">
+            <div class="w-11 h-11 rounded-xl bg-gradient-to-tr from-red-600/30 to-amber-500/30 border border-red-500/40 flex items-center justify-center text-red-400 text-lg group-hover:scale-110 transition-transform">
+              <i class="fa-solid fa-table-cells-large"></i>
+            </div>
+            <div>
+              <h3 class="font-bold text-white group-hover:text-red-400 transition-colors flex items-center gap-2">
+                Homarr Dashboard
+                <span class="text-[10px] bg-gradient-to-r from-red-500 to-amber-500 text-white font-bold px-1.5 py-0.5 rounded-full uppercase tracking-wider">Principal</span>
+              </h3>
+              <p class="text-xs text-zinc-400">Painel Geral com Widgets ao Vivo</p>
+            </div>
+          </div>
+          <span class="text-xs text-red-400 font-mono bg-red-950/60 px-2 py-1 rounded-lg border border-red-800/60">:7575</span>
+        </a>
+
+        <!-- Navidrome (Nosso Spotify) -->
+        <a href="http://192.168.15.58:4533" target="_blank" class="card-glass p-4 rounded-2xl flex items-center justify-between group border border-emerald-500/40 hover:border-emerald-500 shadow-lg shadow-emerald-500/10">
+          <div class="flex items-center gap-3.5">
+            <div class="w-11 h-11 rounded-xl bg-gradient-to-tr from-emerald-600/30 to-teal-500/30 border border-emerald-500/40 flex items-center justify-center text-emerald-400 text-lg group-hover:scale-110 transition-transform">
+              <i class="fa-solid fa-music"></i>
+            </div>
+            <div>
+              <h3 class="font-bold text-white group-hover:text-emerald-400 transition-colors flex items-center gap-2">
+                Navidrome (Músicas)
+                <span class="text-[10px] bg-gradient-to-r from-emerald-500 to-teal-500 text-white font-bold px-1.5 py-0.5 rounded-full uppercase tracking-wider">Spotify</span>
+              </h3>
+              <p class="text-xs text-zinc-400">Streaming no HD Externo (233GB)</p>
+            </div>
+          </div>
+          <span class="text-xs text-emerald-400 font-mono bg-emerald-950/60 px-2 py-1 rounded-lg border border-emerald-800/60">:4533</span>
+        </a>
+
+        <!-- Central de Legendas Mobile -->
         <a href="http://192.168.15.58:5050" target="_blank" class="card-glass p-4 rounded-2xl flex items-center justify-between group border border-purple-500/40 hover:border-purple-500 shadow-lg shadow-purple-500/10">
           <div class="flex items-center gap-3.5">
             <div class="w-11 h-11 rounded-xl bg-gradient-to-tr from-purple-600/30 to-sky-500/30 border border-purple-500/40 flex items-center justify-center text-purple-300 text-lg group-hover:scale-110 transition-transform">
@@ -238,6 +272,34 @@
             </div>
           </div>
           <span class="text-xs text-zinc-500 font-mono bg-zinc-900 px-2 py-1 rounded-lg border border-zinc-800">:80</span>
+        </a>
+
+        <!-- Pi-hole DNS -->
+        <a href="http://192.168.15.58:8085/admin" target="_blank" class="card-glass p-4 rounded-2xl flex items-center justify-between group">
+          <div class="flex items-center gap-3.5">
+            <div class="w-11 h-11 rounded-xl bg-rose-500/10 border border-rose-500/20 flex items-center justify-center text-rose-400 text-lg group-hover:scale-110 transition-transform">
+              <i class="fa-solid fa-shield-virus"></i>
+            </div>
+            <div>
+              <h3 class="font-bold text-white group-hover:text-rose-400 transition-colors">Pi-hole Bloqueador</h3>
+              <p class="text-xs text-zinc-400">Anti-Anúncios & DNS (505k regras)</p>
+            </div>
+          </div>
+          <span class="text-xs text-rose-400 font-mono bg-rose-950/60 px-2 py-1 rounded-lg border border-rose-800/60">:8085</span>
+        </a>
+
+        <!-- MeTube (Downloader YouTube) -->
+        <a href="http://192.168.15.58:8081" target="_blank" class="card-glass p-4 rounded-2xl flex items-center justify-between group">
+          <div class="flex items-center gap-3.5">
+            <div class="w-11 h-11 rounded-xl bg-red-500/10 border border-red-500/20 flex items-center justify-center text-red-500 text-lg group-hover:scale-110 transition-transform">
+              <i class="fa-brands fa-youtube"></i>
+            </div>
+            <div>
+              <h3 class="font-bold text-white group-hover:text-red-400 transition-colors">MeTube Downloader</h3>
+              <p class="text-xs text-zinc-400">Baixar Vídeos e Áudio MP3</p>
+            </div>
+          </div>
+          <span class="text-xs text-red-400 font-mono bg-red-950/60 px-2 py-1 rounded-lg border border-red-800/60">:8081</span>
         </a>
 
         <!-- qBittorrent -->
