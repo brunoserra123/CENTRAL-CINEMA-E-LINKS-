@@ -1,0 +1,15 @@
+[Unit]
+Description=Sentinela Vigilante Uptime - Raspberry Pi 3
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=pi
+WorkingDirectory=/home/pi/scripts
+ExecStart=/usr/bin/python3 /home/pi/scripts/sentinela_vigilante_pi.py
+Restart=always
+RestartSec=15
+
+[Install]
+WantedBy=multi-user.target
