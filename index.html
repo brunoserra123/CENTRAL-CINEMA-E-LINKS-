@@ -171,6 +171,81 @@
     <!-- Conteúdo Principal Semântico (WAVE Landmark) -->
     <main id="main-content" class="space-y-8">
 
+
+    <!-- WIDGET CHATGPT: RASTREADOR DE LIMITE E TIMER REGRESSIVO 3H -->
+    <div class="card-glass p-5 rounded-3xl border border-emerald-500/30 bg-gradient-to-r from-emerald-950/20 via-zinc-900/70 to-purple-950/20 shadow-xl">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+        <!-- Info e Círculo -->
+        <div class="flex items-center gap-4 w-full md:w-auto">
+          <div class="relative w-14 h-14 flex items-center justify-center shrink-0">
+            <svg class="w-full h-full -rotate-90" viewBox="0 0 36 36">
+              <path class="text-zinc-800" stroke-width="3" stroke="currentColor" fill="none" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+              <path id="gptCircleArc" class="text-emerald-400 transition-all duration-500" stroke-dasharray="100, 100" stroke-width="3" stroke-linecap="round" stroke="currentColor" fill="none" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+            </svg>
+            <span id="gptPercentText" class="absolute text-xs font-bold text-white">100%</span>
+          </div>
+          <div>
+            <div class="flex items-center gap-2">
+              <span class="text-emerald-400 font-bold flex items-center gap-1.5 text-base">
+                <i class="fa-solid fa-robot"></i> Limite do ChatGPT (GPT-4o)
+              </span>
+              <span id="gptStatusPill" class="text-[10px] bg-emerald-950 text-emerald-300 border border-emerald-800 px-2 py-0.5 rounded-full font-bold">Disponível</span>
+            </div>
+            <p class="text-xs text-zinc-400 mt-0.5">
+              Perguntas restantes: <strong id="gptCountText" class="text-white">40 de 40</strong> • Ciclo de 3 horas
+            </p>
+          </div>
+        </div>
+
+        <!-- Timer e Controles -->
+        <div class="flex flex-wrap items-center justify-end gap-2.5 w-full md:w-auto">
+          <div class="bg-zinc-900/90 border border-zinc-800 rounded-xl px-3 py-1.5 text-center min-w-[110px]">
+            <span class="text-[10px] text-zinc-400 block uppercase font-bold tracking-wider">Reseta em</span>
+            <span id="gptTimerText" class="text-sm font-mono font-bold text-emerald-400">Pronto</span>
+          </div>
+          <button onclick="registerGptPrompt()" class="px-3.5 py-2 bg-purple-600 hover:bg-purple-500 text-white rounded-xl text-xs font-bold flex items-center gap-1.5 transition-all shadow-md active:scale-95 cursor-pointer">
+            <i class="fa-solid fa-paper-plane"></i> +1 Pergunta
+          </button>
+          <button onclick="triggerGptLimitHit()" class="px-3 py-2 bg-amber-600/30 hover:bg-amber-600/50 border border-amber-500/40 text-amber-300 rounded-xl text-xs font-bold flex items-center gap-1.5 transition-all active:scale-95 cursor-pointer" title="Bateu o limite de mensagens? Inicia o timer de 3h">
+            <i class="fa-solid fa-hourglass-start"></i> Bateu Limite
+          </button>
+          <button onclick="resetGptCounter()" class="p-2 text-zinc-400 hover:text-white rounded-xl text-xs transition-colors cursor-pointer" title="Restaurar para 40 mensagens">
+            <i class="fa-solid fa-rotate-left"></i>
+          </button>
+          <a href="https://chatgpt.com" target="_blank" class="px-3.5 py-2 bg-zinc-800 hover:bg-zinc-700 text-white rounded-xl text-xs font-bold flex items-center gap-1.5 transition-all">
+            <i class="fa-solid fa-arrow-up-right-from-square"></i> Abrir ChatGPT
+          </a>
+        </div>
+      </div>
+    </div>
+
+
+
+    <!-- SEÇÃO: STATUS DE LEGENDAS IA (FALTA PASSAR VS JÁ FOI) -->
+    <section class="space-y-4" id="legendaStatusSection">
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+        <div class="flex items-center gap-2.5 text-emerald-400">
+          <i class="fa-solid fa-wand-magic-sparkles text-lg"></i>
+          <h2 class="text-lg font-bold text-white tracking-wide">Status de Legendas IA • Falta Passar vs Já Foi</h2>
+          <span class="text-xs bg-emerald-950/80 text-emerald-300 border border-emerald-800/50 px-2 py-0.5 rounded-full font-medium">Auto-IA</span>
+        </div>
+        
+        <!-- Filtros em Pills -->
+        <div class="flex items-center gap-1.5 flex-wrap text-xs">
+          <button onclick="filterSubtitlesStatus('TODOS')" id="btnSubAll" class="px-3 py-1.5 rounded-xl bg-purple-600 text-white font-bold transition-all cursor-pointer">Todos (<span id="subCountAll">0</span>)</button>
+          <button onclick="filterSubtitlesStatus('DONE')" id="btnSubDone" class="px-3 py-1.5 rounded-xl bg-zinc-800 text-emerald-400 hover:bg-zinc-700 font-bold transition-all cursor-pointer">🟢 Essa Foi! (<span id="subCountDone">0</span>)</button>
+          <button onclick="filterSubtitlesStatus('PENDING')" id="btnSubPending" class="px-3 py-1.5 rounded-xl bg-zinc-800 text-amber-400 hover:bg-zinc-700 font-bold transition-all cursor-pointer">🟡 Falta Passar (<span id="subCountPending">0</span>)</button>
+          <button onclick="filterSubtitlesStatus('MISSING')" id="btnSubMissing" class="px-3 py-1.5 rounded-xl bg-zinc-800 text-red-400 hover:bg-zinc-700 font-bold transition-all cursor-pointer">🔴 Sem Legenda (<span id="subCountMissing">0</span>)</button>
+        </div>
+      </div>
+
+      <!-- Grid de Itens com Status -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3.5" id="subtitlesStatusGrid">
+        <!-- Renderizado dinamicamente via JavaScript -->
+      </div>
+    </section>
+
+
     <!-- Seção 1: Servidor Local (Home Server) -->
     <section class="space-y-4">
       <div class="flex items-center gap-2.5 text-purple-400">
@@ -870,8 +945,215 @@
       });
     }
 
+
+    // ==========================================
+    // RASTREADOR DE LIMITE DO CHATGPT (3 HORAS)
+    // ==========================================
+    const GPT_MAX = 40;
+    const GPT_CYCLE_MS = 3 * 60 * 60 * 1000; // 3 horas
+
+    function getGptState() {
+      try {
+        const stored = localStorage.getItem('chatgpt_limit_state');
+        if (stored) return JSON.parse(stored);
+      } catch (e) {}
+      return { used: 0, resetAt: null };
+    }
+
+    function saveGptState(state) {
+      try {
+        localStorage.setItem('chatgpt_limit_state', JSON.stringify(state));
+      } catch (e) {}
+    }
+
+    function updateGptUI() {
+      const state = getGptState();
+      const now = Date.now();
+
+      // Checa se o ciclo de 3h já expirou
+      if (state.resetAt && now >= state.resetAt) {
+        state.used = 0;
+        state.resetAt = null;
+        saveGptState(state);
+      }
+
+      const remaining = Math.max(0, GPT_MAX - state.used);
+      const pct = Math.round((remaining / GPT_MAX) * 100);
+
+      const circle = document.getElementById('gptCircleArc');
+      const textPct = document.getElementById('gptPercentText');
+      const textCount = document.getElementById('gptCountText');
+      const textTimer = document.getElementById('gptTimerText');
+      const pill = document.getElementById('gptStatusPill');
+
+      if (circle) circle.setAttribute('stroke-dasharray', `${pct}, 100`);
+      if (textPct) textPct.innerText = `${pct}%`;
+      if (textCount) textCount.innerText = `${remaining} de ${GPT_MAX}`;
+
+      if (state.resetAt && now < state.resetAt) {
+        const diff = state.resetAt - now;
+        const h = Math.floor(diff / 3600000);
+        const m = Math.floor((diff % 3600000) / 60000);
+        const s = Math.floor((diff % 60000) / 1000);
+        const pad = (n) => String(n).padStart(2, '0');
+        if (textTimer) textTimer.innerText = `${pad(h)}:${pad(m)}:${pad(s)}`;
+
+        if (remaining === 0) {
+          if (pill) {
+            pill.className = 'text-[10px] bg-red-950 text-red-300 border border-red-800 px-2 py-0.5 rounded-full font-bold';
+            pill.innerText = 'Limite Atingido';
+          }
+          if (circle) circle.className.baseVal = 'text-red-400 transition-all duration-500';
+        } else {
+          if (pill) {
+            pill.className = 'text-[10px] bg-amber-950 text-amber-300 border border-amber-800 px-2 py-0.5 rounded-full font-bold';
+            pill.innerText = 'Em Contagem';
+          }
+          if (circle) circle.className.baseVal = 'text-amber-400 transition-all duration-500';
+        }
+      } else {
+        if (textTimer) textTimer.innerText = 'Liberado';
+        if (pill) {
+          pill.className = 'text-[10px] bg-emerald-950 text-emerald-300 border border-emerald-800 px-2 py-0.5 rounded-full font-bold';
+          pill.innerText = 'Disponível';
+        }
+        if (circle) circle.className.baseVal = 'text-emerald-400 transition-all duration-500';
+      }
+    }
+
+    function registerGptPrompt() {
+      const state = getGptState();
+      if (state.used < GPT_MAX) {
+        state.used += 1;
+        if (!state.resetAt) {
+          state.resetAt = Date.now() + GPT_CYCLE_MS;
+        }
+        saveGptState(state);
+        updateGptUI();
+      }
+    }
+
+    function triggerGptLimitHit() {
+      const state = getGptState();
+      state.used = GPT_MAX;
+      state.resetAt = Date.now() + GPT_CYCLE_MS;
+      saveGptState(state);
+      updateGptUI();
+    }
+
+    function resetGptCounter() {
+      const state = { used: 0, resetAt: null };
+      saveGptState(state);
+      updateGptUI();
+    }
+
+    setInterval(updateGptUI, 1000);
+
+    // ==========================================
+    // CATÁLOGO DE STATUS DE LEGENDAS (FALTA VS JÁ FOI)
+    // ==========================================
+    const SUBTITLES_CATALOG = [
+      { id: 'mf_s08', title: 'Modern Family - Temporada 08', type: 'Série', eps: '22 episódios', status: 'DONE', srt: 'Alinhada por IA (ffsubsync)', drive: 'SSD' },
+      { id: 'mf_s09', title: 'Modern Family - Temporada 09', type: 'Série', eps: '22 episódios', status: 'DONE', srt: 'Alinhada por IA (ffsubsync)', drive: 'SSD' },
+      { id: 'mf_s01', title: 'Modern Family - Temporada 01', type: 'Série', eps: '24 episódios', status: 'DONE', srt: 'Legendas PT-BR OK', drive: 'SSD' },
+      { id: 'bob_2020', title: 'Books of Blood (2020) [4K]', type: 'Filme', eps: 'Longa', status: 'DONE', srt: 'Alinhada por IA (68s)', drive: 'SSD' },
+      { id: 'exh_2007', title: 'Exhibit A (2007)', type: 'Filme', eps: 'Longa', status: 'DONE', srt: 'Alinhada por IA (208s)', drive: 'SSD' },
+      { id: 'whg_2014', title: 'Where Hope Grows (2014)', type: 'Filme', eps: 'Longa', status: 'DONE', srt: 'Alinhada por IA (232s)', drive: 'SSD' },
+      { id: 'jl_2008', title: 'Justice League: The New Frontier', type: 'Filme', eps: 'Longa', status: 'DONE', srt: 'Alinhada por IA (176s)', drive: 'SSD' },
+      { id: 'jv_col', title: 'Coleção Jogos Vorazes (2012-2023)', type: 'Filme', eps: '4 Filmes', status: 'DONE', srt: 'Legenda PT-BR Embutida', drive: 'HD Externo' },
+      { id: 'inf_1993', title: 'In the Name of the Father (1993)', type: 'Filme', eps: 'Longa', status: 'DONE', srt: 'Legenda PT-BR Sincronizada', drive: 'HD Externo' },
+      { id: 'july_2018', title: '22 July (2018) [1080p]', type: 'Filme', eps: 'Longa', status: 'DONE', srt: 'Legenda PT-BR Sincronizada', drive: 'HD Externo' },
+      { id: 'wgd_2014', title: 'White God (2014)', type: 'Filme', eps: 'Longa', status: 'PENDING', srt: 'Aguardando Re-alinhamento', drive: 'SSD' },
+      { id: 'the_2017', title: 'Thelma (2017) [1080p]', type: 'Filme', eps: 'Longa', status: 'MISSING', srt: 'Sem Legenda Externa nem Embutida', drive: 'SSD' }
+    ];
+
+    let currentSubFilter = 'TODOS';
+
+    function filterSubtitlesStatus(f) {
+      currentSubFilter = f;
+      const btnAll = document.getElementById('btnSubAll');
+      const btnDone = document.getElementById('btnSubDone');
+      const btnPending = document.getElementById('btnSubPending');
+      const btnMissing = document.getElementById('btnSubMissing');
+
+      [btnAll, btnDone, btnPending, btnMissing].forEach(b => {
+        if (b) b.className = 'px-3 py-1.5 rounded-xl bg-zinc-800 text-zinc-400 hover:bg-zinc-700 font-bold transition-all cursor-pointer';
+      });
+
+      if (f === 'TODOS' && btnAll) btnAll.className = 'px-3 py-1.5 rounded-xl bg-purple-600 text-white font-bold transition-all cursor-pointer';
+      if (f === 'DONE' && btnDone) btnDone.className = 'px-3 py-1.5 rounded-xl bg-emerald-600 text-white font-bold transition-all cursor-pointer';
+      if (f === 'PENDING' && btnPending) btnPending.className = 'px-3 py-1.5 rounded-xl bg-amber-600 text-white font-bold transition-all cursor-pointer';
+      if (f === 'MISSING' && btnMissing) btnMissing.className = 'px-3 py-1.5 rounded-xl bg-red-600 text-white font-bold transition-all cursor-pointer';
+
+      renderSubtitlesGrid();
+    }
+
+    function renderSubtitlesGrid() {
+      const grid = document.getElementById('subtitlesStatusGrid');
+      if (!grid) return;
+
+      const items = SUBTITLES_CATALOG.filter(it => {
+        if (currentSubFilter === 'DONE') return it.status === 'DONE';
+        if (currentSubFilter === 'PENDING') return it.status === 'PENDING';
+        if (currentSubFilter === 'MISSING') return it.status === 'MISSING';
+        return true;
+      });
+
+      // Update counters
+      const countAll = SUBTITLES_CATALOG.length;
+      const countDone = SUBTITLES_CATALOG.filter(i => i.status === 'DONE').length;
+      const countPending = SUBTITLES_CATALOG.filter(i => i.status === 'PENDING').length;
+      const countMissing = SUBTITLES_CATALOG.filter(i => i.status === 'MISSING').length;
+
+      document.getElementById('subCountAll').innerText = countAll;
+      document.getElementById('subCountDone').innerText = countDone;
+      document.getElementById('subCountPending').innerText = countPending;
+      document.getElementById('subCountMissing').innerText = countMissing;
+
+      grid.innerHTML = items.map(it => {
+        let badge = '';
+        let borderClass = '';
+        if (it.status === 'DONE') {
+          badge = '<span class="text-[10px] bg-emerald-950 text-emerald-300 border border-emerald-800 px-2 py-0.5 rounded-full font-bold">🟢 ESSA FOI!</span>';
+          borderClass = 'hover:border-emerald-500/50';
+        } else if (it.status === 'PENDING') {
+          badge = '<span class="text-[10px] bg-amber-950 text-amber-300 border border-amber-800 px-2 py-0.5 rounded-full font-bold">🟡 FALTA PASSAR</span>';
+          borderClass = 'hover:border-amber-500/50';
+        } else {
+          badge = '<span class="text-[10px] bg-red-950 text-red-300 border border-red-800 px-2 py-0.5 rounded-full font-bold">🔴 SEM LEGENDA</span>';
+          borderClass = 'hover:border-red-500/50';
+        }
+
+        const icon = it.type === 'Série' ? 'fa-tv text-purple-400' : 'fa-film text-sky-400';
+
+        return `
+          <div class="card-glass p-3.5 rounded-2xl flex flex-col justify-between space-y-2.5 ${borderClass}">
+            <div class="flex items-start justify-between gap-2">
+              <div class="flex items-center gap-2.5">
+                <div class="w-8 h-8 rounded-lg bg-zinc-800 border border-zinc-700/60 flex items-center justify-center shrink-0">
+                  <i class="fa-solid ${icon} text-xs"></i>
+                </div>
+                <div>
+                  <h4 class="font-bold text-white text-xs sm:text-sm line-clamp-1">${it.title}</h4>
+                  <span class="text-[10px] text-zinc-400">${it.eps} • Local: ${it.drive}</span>
+                </div>
+              </div>
+              ${badge}
+            </div>
+            <div class="bg-zinc-900/80 rounded-xl px-2.5 py-1.5 border border-zinc-800 flex items-center justify-between text-[11px]">
+              <span class="text-zinc-400 truncate max-w-[200px]"><i class="fa-solid fa-closed-captioning mr-1 text-zinc-500"></i> ${it.srt}</span>
+              <a href="http://192.168.15.58:8096" target="_blank" class="text-purple-400 hover:text-purple-300 font-bold shrink-0">Jellyfin ➔</a>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+
     // Inicializar na carga
     renderCustomLinks();
+    updateGptUI();
+    filterSubtitlesStatus("TODOS");
   </script>
 </body>
 </html>
